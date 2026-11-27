@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Питай по моїх файлах</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app" id="app">
+  <input type="file" id="files" multiple accept=".pdf,.docx,.pptx,.txt,.md" hidden>
+  <aside class="side">
+    <div class="brand">
+      <div class="logo"><span class="ic" data-i="search"></span></div>
+      <div><h1>Питай по моїх файлах</h1><p>Відповіді лише з ваших документів, із джерелом</p></div>
+    </div>
+    <div class="list" id="list"></div>
+    <div class="side-foot"><span class="dot" id="statusDot"></span><span id="statusText">перевірка моделей…</span></div>
+  </aside>
+
+  <main class="chat" id="chat">
+    <div class="chat-head">
+      <div class="who">
+        <span class="badge all" id="scopeBadge"></span>
+        <div style="min-width:0"><div class="title" id="scopeTitle"></div><div class="sub" id="scopeSub"></div></div>
+      </div>
+      <div class="head-actions">
+        <button class="ghost" id="rename" type="button"><span class="ic sm" data-i="pencil"></span>Назва</button>
+        <button class="ghost" id="clear" type="button"><span class="ic sm" data-i="eraser"></span>Очистити чат</button>
+      </div>
+    </div>
+    <div class="thread" id="thread"><div class="col" id="col"></div></div>
+    <div class="composer">
+      <form id="form">
+        <button class="attach" id="attach" type="button" title="Додати файли в чат" aria-label="Додати файли в чат"><span class="ic" data-i="paperclip"></span></button>
+        <textarea id="question" rows="1" placeholder="Поставте питання по файлах чату…" aria-label="Питання"></textarea>
+        <button class="send" id="send" type="submit" aria-label="Запитати"><span class="ic" data-i="up"></span></button>
+      </form>
+      <div class="hint">Enter: надіслати · Shift+Enter: новий рядок</div>
+    </div>
+  </main>
+  <aside class="files" id="filesPanel">
+    <div class="files-head"><h2>Файли</h2><span class="count" id="filesCount"></span></div>
+    <div class="files-list" id="filesList"></div>
+  </aside>
+</div>
+
+<script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
